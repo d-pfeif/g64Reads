@@ -46,14 +46,14 @@ exports.seed = function(knex, Promise) {
           bio: `Kyle Simpson is an Open Web Evangelist who's passionate about all things JavaScript. He's an author, workshop trainer, tech speaker, and OSS contributor/leader.`,
           portrate_url: `https://s3-us-west-2.amazonaws.com/assessment-images/galvanize_reads/photos/kyle_simpson.jpg`,
           book_id: 4
-        },
-        {
-          firstName: `Kyle`,
-          lastName: `Simpson`,
-          bio: `Kyle Simpson is an Open Web Evangelist who's passionate about all things JavaScript. He's an author, workshop trainer, tech speaker, and OSS contributor/leader.`,
-          portrate_url: `https://s3-us-west-2.amazonaws.com/assessment-images/galvanize_reads/photos/kyle_simpson.jpg`,
-          book_id: 5
         }
+        // {
+        //   firstName: `Kyle`,
+        //   lastName: `Simpson`,
+        //   bio: `Kyle Simpson is an Open Web Evangelist who's passionate about all things JavaScript. He's an author, workshop trainer, tech speaker, and OSS contributor/leader.`,
+        //   portrate_url: `https://s3-us-west-2.amazonaws.com/assessment-images/galvanize_reads/photos/kyle_simpson.jpg`,
+        //   book_id: 5
+        // }
       ]);
     });
 };

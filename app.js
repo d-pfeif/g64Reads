@@ -14,8 +14,13 @@ app.listen(port, ()=>{
 app.get('/', (req,res)=>{
   queries.getBookData()
   .then(bookData => {
-    res.render('index', {
-      bookData: bookData
+    queries.getAuthorData()
+    .then(authorData => {
+      res.render('index', {
+        bookData: bookData,
+        authorData: authorData
+      })
+
     })
 
   })

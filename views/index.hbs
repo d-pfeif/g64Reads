@@ -11,6 +11,19 @@
       <h1>Galvanize Reads</h1>
     </header>
     <div id="dataSection">
+      <div id="authorSection">
+        <div id="homeAuthorData">
+          {{#each authorData}}
+            <div class="homeAuthor">
+              <img class="authorPic" src="{{portrate_url}}" alt="{{firstName}} {{lastName}}">
+              <div class="homeAuthorInfo">
+                <h4>Name: {{firstName}} {{lastName}}</h4>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+        <h3>Authors</h3>
+      </div>
       <div id="bookSection">
         <div id="homeBookData">
           {{#each bookData}}
@@ -19,7 +32,6 @@
               <div class="homeBookInfo">
                 <h4>Title: {{title}}</h4>
                 <h5>Genre: {{genre}}</h5>
-                <!-- <p>{{desc}}</p> -->
               </div>
             </div>
           {{/each}}
