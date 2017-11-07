@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/d-pfeif/g64Reads#readme",
   "dependencies": {
+    "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "hbs": "^4.0.1",
     "knex": "^0.14.0",

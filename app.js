@@ -1,4 +1,5 @@
 const express = require('express');
+const queries = require('./database/queries')
 
 const app = express();
 
@@ -10,5 +11,11 @@ app.listen(3000, (req,res)=>{
 })
 
 app.get('/', (req,res)=>{
-  res.render('index')
+  queries.getBookData()
+  .then(bookData => {
+    res.render('index', {
+      bookData: bookData
+    })
+
+  })
 })
