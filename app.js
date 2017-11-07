@@ -7,7 +7,7 @@ const app = express();
 app.set('view engine', 'hbs')
 app.use(express.static('public'))
 
-app.listen(port, (req,res)=>{
+app.listen(port, ()=>{
   console.log("KEYBLADE!")
 })
 
