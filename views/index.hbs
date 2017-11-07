@@ -12,30 +12,27 @@
     </header>
     <div id="dataSection">
       <div id="authorSection">
-        <div id="homeAuthorData">
-          {{#each authorData}}
-            <div class="homeAuthor">
-              <img class="authorPic" src="{{portrate_url}}" alt="{{firstName}} {{lastName}}">
-              <div class="homeAuthorInfo">
-                <h4>Name: {{firstName}} {{lastName}}</h4>
+        <a href="/books">
+          <div id="homeAuthorData">
+            {{#each authorData}}
+              <div class="homeAuthor">
+                <img class="authorPic" src="{{portrate_url}}" alt="{{firstName}} {{lastName}}">
               </div>
-            </div>
-          {{/each}}
-        </div>
+            {{/each}}
+          </div>
+        </a>
         <h3>Authors</h3>
       </div>
       <div id="bookSection">
-        <div id="homeBookData">
-          {{#each bookData}}
-            <div class="homeBooks">
-              <img class="bookCovers" src="{{cover_url}}" alt="{{title}}">
-              <div class="homeBookInfo">
-                <h4>Title: {{title}}</h4>
-                <h5>Genre: {{genre}}</h5>
+        <a href="/authors">
+          <div id="homeBookData">
+            {{#each bookData}}
+              <div class="homeBooks">
+                <img class="bookCovers" src="{{cover_url}}" alt="{{title}}">
               </div>
-            </div>
-          {{/each}}
-        </div>
+            {{/each}}
+          </div>
+        </a>
         <h3>Books</h3>
       </div>
     </div>
