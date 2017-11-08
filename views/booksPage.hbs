@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>G64 Reads: Books</title>
+    <link rel="stylesheet" href="/main.css">
+  </head>
+  <body>
+    <header>
+      <a href="/">
+        <img id="logo" width="110px" height="80px" src="./bookLogo.png" alt="an open book">
+        <h1>Galvanize Reads</h1>
+      </a>
+    </header>
+    <a href="/authors">
+      <button>Authors</button>
+    </a>
+    <a href="/books">
+      <button disabled>Books</button>
+    </a>
+    <div id="bookArea">
+      {{#each bookData}}
+        <a href="/book/{{id}}">
+          <div class="homeBooks bookLinks">
+            <img class="bookCovers" src="{{url}}" alt="{{title}}">
+            <div class="homeBookInfo">
+              <h3>{{title}}</h3>
+              <h5>by {{authors }}</h5>
+              <h5>{{genre}}</h5>
+              <p> {{desc}} </p>
+            </div>
+          </div>
+        </a>
+      {{/each}}
+    </div>
+  </body>
+</html>

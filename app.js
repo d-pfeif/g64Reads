@@ -20,8 +20,17 @@ app.get('/', (req,res)=>{
         bookData: bookData,
         authorData: authorData
       })
+    })
+  })
+})
+
+app.get('/books', (req,res)=>{
+    queries.joinTables()
+    .then(bookData => {
+      // res.send(bookData)
+      res.render('booksPage', {
+        bookData: bookData
+      })
 
     })
-
-  })
 })

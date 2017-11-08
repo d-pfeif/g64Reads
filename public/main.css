@@ -40,7 +40,7 @@ header h1 {
 }
 
 
-#homeBookData:hover, #homeAuthorData:hover {
+#homeBookData:hover, #homeAuthorData:hover, .bookLinks:hover {
   background-color: darkred;
 }
 
@@ -48,6 +48,9 @@ h3, a {
   color: black;
   text-align: center;
   text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .homeBooks, .homeAuthor {
@@ -60,4 +63,9 @@ h3, a {
 .bookCovers, .authorPic {
   width: 8em;
   height: 10em;
+}
+
+#bookArea {
+  margin-left: 20%;
+  margin-right: 20%;
 }

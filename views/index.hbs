@@ -7,12 +7,14 @@
   </head>
   <body>
     <header>
-      <img id="logo" width="110px" height="80px" src="./bookLogo.png" alt="an open book">
-      <h1>Galvanize Reads</h1>
+      <a href="/">
+        <img id="logo" width="110px" height="80px" src="./bookLogo.png" alt="an open book">
+        <h1>Galvanize Reads</h1>
+      </a>
     </header>
     <div id="dataSection">
       <div id="authorSection">
-        <a href="/books">
+        <a href="/authors">
           <div id="homeAuthorData">
             {{#each authorData}}
               <div class="homeAuthor">
@@ -24,7 +26,7 @@
         <h3>Authors</h3>
       </div>
       <div id="bookSection">
-        <a href="/authors">
+        <a href="/books">
           <div id="homeBookData">
             {{#each bookData}}
               <div class="homeBooks">
