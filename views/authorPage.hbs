@@ -19,15 +19,16 @@
       <button disabled>Books</button>
     </a>
     <div id="bookArea">
-      {{#each bookData}}
-        <a href="/books/{{book_id}}">
-          <div class="homeBooks bookLinks">
-            <img class="bookCovers" src="{{url}}" alt="{{title}}">
+      {{#each data}}
+        <a href="/authors/{{author_id}}">
+          <div class="homeAuthor bookLinks">
+            <img class="bookCovers" src="{{portrate_url}}" alt="{{name}}">
             <div class="homeBookInfo">
-              <h3>{{title}}</h3>
-              <h5>by {{authors }}</h5>
-              <h5>{{genre}}</h5>
-              <p> {{desc}} </p>
+              <h3>{{name}}</h3>
+              <p> {{bio}} </p>
+            </div>
+            <div class="">
+              <p>{{books}}</p>
             </div>
           </div>
         </a>

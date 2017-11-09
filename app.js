@@ -25,12 +25,32 @@ app.get('/', (req,res)=>{
 })
 
 app.get('/books', (req,res)=>{
-    queries.joinTables()
-    .then(bookData => {
-      // res.send(bookData)
-      res.render('booksPage', {
-        bookData: bookData
-      })
-
+  queries.getAllBookData()
+  .then(bookData => {
+    // res.send(bookData)
+    res.render('booksPage', {
+      bookData: bookData
     })
+  })
+})
+
+app.get('/books/:id', (req,res)=>{
+  const id = req.params.id;
+  queries.getOneBook(id)
+  .then(bookData => {
+    // res.send(bookData)
+    res.render('oneBookPage', {
+      bookData: bookData
+    })
+  })
+})
+
+app.get('/authors', (req,res)=>{
+  queries.getAllAuthorData()
+  .then(data=>{
+    // res.send(data)
+    res.render('authorPage', {
+      data: data
+    })
+  })
 })
