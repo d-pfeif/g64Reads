@@ -1,11 +1,13 @@
 const express = require('express');
 const queries = require('./database/queries')
 const port = process.env.PORT || 3000
+const bodyParser = require('body-parser')
 
 const app = express();
 
 app.set('view engine', 'hbs')
 app.use(express.static('public'))
+app.use(bodyParser.urlencoded({ extended: false }))
 
 app.listen(port, ()=>{
   console.log("KEYBLADE!")
@@ -34,6 +36,17 @@ app.get('/books', (req,res)=>{
   })
 })
 
+app.get('/books/new', (req,res)=>{
+  queries.getAuthorData()
+  .then(data=>{
+    res.render('newBookForm', {
+      data: data
+      
+    })
+
+  })
+})
+
 app.get('/books/:id', (req,res)=>{
   const id = req.params.id;
   queries.getOneBook(id)
@@ -53,4 +66,14 @@ app.get('/authors', (req,res)=>{
       data: data
     })
   })
+})
+
+app.get('/authors/:id', (req,res)=>{
+  const id = req.params.id;
+  res.send()
+})
+
+app.post('/books/new/post', (req,res)=>{
+  res.send(req.body)
+
 })

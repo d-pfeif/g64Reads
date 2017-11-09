@@ -16,6 +16,18 @@ header {
   padding-bottom: 1em;
 }
 
+header a {
+  padding-left: 3em;
+  padding-right: 3em;
+  transition: background-color 2s, margin-left 1s, border-radius 3s;
+}
+
+header a:hover {
+  background-color: lightcoral;
+  margin-left: 2em;
+  border-radius: 20px;
+}
+
 header h1 {
   font-family: cursive;
   font-size: 3em;
@@ -90,7 +102,7 @@ h3, a {
   height: 10em;
 }
 
-#bookArea {
+#bookArea, form {
   margin-left: 20%;
   margin-right: 20%;
 }
@@ -142,7 +154,7 @@ nav a:hover, #bookNav a:hover, .bookLinks:hover  {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: 24em;
+  width: 33em;
 }
 
 #bookNav a {
@@ -153,4 +165,21 @@ nav a:hover, #bookNav a:hover, .bookLinks:hover  {
   justify-content: center;
   background-color: red;
   transition: border-radius 2s, background-color 1s;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin-top: 2em;
+  background-color:
+}
+
+.bookDescInput {
+  height: 12em;
+}
+
+.addBookAuthor {
+  border: 1px solid black;
+  height: 6em;
 }

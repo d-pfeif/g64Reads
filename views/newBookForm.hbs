@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>G64 Reads: New Book</title>
+    <link rel="stylesheet" href="/main.css">
+  </head>
+  <body>
+    <header>
+      <a href="/">
+        <img id="logo" width="110px" height="80px" src="/bookLogo.png" alt="an open book">
+        <h1>Galvanize Reads</h1>
+      </a>
+    </header>
+    <div id="activeBody">
+      <nav>
+        <a style="background: darkred">Authors</a>
+        <a href="/books">Books</a>
+      </nav>
+      <form action="/books/new/post" method="post">
+        <label>Title</label>
+        <input type="text" name="title" value="">
+        <label>Genre</label>
+        <input type="text" name="genre" value="">
+        <label for="">Cover Image URL</label>
+        <input type="text" name="cover_url" value="">
+        <label for="">Description</label>
+        <textarea class="bookDescInput" name="desc"></textarea>
+        <label for="">Authors</label>
+        <div class="addBookAuthor"></div>
+        <span>
+        <input type="hidden" name="author_array" class="authHide">
+        <select class="addThisAuthor" style="width: 70%">
+          {{#each data}}
+            <option value="{{id}}">{{firstName}} {{lastName}}</option>
+          {{/each}}
+        </select>
+          <button type="button" onclick="selectAuthor()">Add Author</button>
+        </span>
+        <button type="submit">Add Book</button>
+      </form>
+    </div>
+    <script type="text/javascript">
+      var authInput = document.getElementsByClassName('addThisAuthor')
+      var authArea = document.getElementsByClassName('addBookAuthor')
+      var authHide = document.getElementsByClassName('authHide')
+      var authArr = []
+      function selectAuthor() {
+        console.log(authInput)
+        var name = authInput[0].selectedOptions[0].innerHTML
+        if (authArr.indexOf(authInput[0].value) === -1) {
+          var div = document.createElement('div')
+          div.append(name)
+          authArea[0].append(div)
+          authArr.push(authInput['0'].value)
+          // console.log(authArea.length)
+        }
+
+        authHide.author_array.value = authArr
+        console.log(authHide)
+      }
+    </script>
+  </body>
+</html>

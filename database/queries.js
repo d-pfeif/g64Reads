@@ -104,7 +104,6 @@ function getAllAuthorData(){
   })
 }
 
-
 module.exports = {
   getBookData,
   getAuthorData,
