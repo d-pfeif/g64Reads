@@ -9,7 +9,7 @@ function getAuthorData() {
 }
 
 function getAllBookData() {
-  return db('authors').select('*').join('booksAndAuthors', 'authors.id', 'author_id').fullOuterJoin('books', 'booksAndAuthors.book_id', 'books.id' )
+  return db('authors').select('*').join('books_authors', 'authors.id', 'author_id').fullOuterJoin('books', 'books_authors.book_id', 'books.id' )
   .then(data=>{
     // return data
     let arrBooks = []
@@ -43,7 +43,7 @@ function getAllBookData() {
 }
 
 function getOneBook(id) {
-  return db('authors').join('booksAndAuthors', 'authors.id', 'author_id').fullOuterJoin('books', 'booksAndAuthors.book_id', 'books.id').select('*').where('books.id', id)
+  return db('authors').join('books_authors', 'authors.id', 'author_id').fullOuterJoin('books', 'books_authors.book_id', 'books.id').select('*').where('books.id', id)
   .then(data => {
     // return data
     let arrBooks = []
@@ -73,7 +73,7 @@ function getOneBook(id) {
 }
 
 function getAllAuthorData(){
-  return db('authors').select().join('booksAndAuthors', 'booksAndAuthors.author_id', 'authors.id').join('books', 'booksAndAuthors.book_id', 'books.id')
+  return db('authors').select().join('books_authors', 'books_authors.author_id', 'authors.id').join('books', 'books_authors.book_id', 'books.id')
   .then(data => {
 
     var arrAuthors = []
@@ -104,10 +104,38 @@ function getAllAuthorData(){
   })
 }
 
+function addBookToDB(book) {
+  var authArr = book.author_array.split(',')
+  // console.log(authArr[0])
+
+  var newBook = new Object()
+    newBook.title = book.title
+    newBook.genre = book.genre
+    newBook.desc = book.desc
+    newBook.cover_url = book.cover_url
+
+  return db('books').insert(newBook).returning('id')
+}
+
+function addBookAuth(bookID, authID) {
+  return db('books').select().where('id', bookID).then(data=>{
+      // console.log(data[0].id)
+      var book_auth = new Object()
+      book_auth.book_id = data[0].id
+      book_auth.author_id = authID
+
+      return db('books_authors').insert(book_auth)
+
+
+  })
+}
+
 module.exports = {
   getBookData,
   getAuthorData,
   getAllBookData,
   getOneBook,
-  getAllAuthorData
+  getAllAuthorData,
+  addBookToDB,
+  addBookAuth
 }

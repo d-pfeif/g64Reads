@@ -41,7 +41,7 @@ app.get('/books/new', (req,res)=>{
   .then(data=>{
     res.render('newBookForm', {
       data: data
-      
+
     })
 
   })
@@ -74,6 +74,14 @@ app.get('/authors/:id', (req,res)=>{
 })
 
 app.post('/books/new/post', (req,res)=>{
-  res.send(req.body)
+  // res.send(req.body)
+  queries.addBookToDB(req.body).then(bookId => {
+    var authArr = req.body.author_array.split(',')
+    for(var i = 0; i < authArr.length; i++) {
+      queries.addBookAuth(bookId[0], authArr[i]).then(data => {
+        res.redirect('/')
+      })
+    }
+  })
 
 })

@@ -1,10 +1,10 @@
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex('booksAndAuthors').del()
+  return knex('books_authors').del()
     .then(function () {
       // Inserts seed entries
-      return knex('booksAndAuthors').insert([
+      return knex('books_authors').insert([
         {
           book_id: 1,
           author_id: 1
