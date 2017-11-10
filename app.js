@@ -70,7 +70,13 @@ app.get('/authors', (req,res)=>{
 
 app.get('/authors/:id', (req,res)=>{
   const id = req.params.id;
-  res.send()
+  queries.getAuthorById(id)
+  .then(data=>{
+    // res.send(data)
+    res.render('oneAuthorPage', {
+      data:data
+    })
+  })
 })
 
 app.post('/books/new/post', (req,res)=>{
@@ -78,10 +84,9 @@ app.post('/books/new/post', (req,res)=>{
   queries.addBookToDB(req.body).then(bookId => {
     var authArr = req.body.author_array.split(',')
     for(var i = 0; i < authArr.length; i++) {
-      queries.addBookAuth(bookId[0], authArr[i]).then(data => {
-        res.redirect('/')
-      })
+      queries.addBookAuth(bookId[0], authArr[i])
     }
+    res.redirect('/')
   })
 
 })

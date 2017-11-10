@@ -12,20 +12,24 @@
         <h1>Galvanize Reads</h1>
       </a>
     </header>
-    <div id="bookArea">
-
-      {{#if bookData}}
-          <div class="homeBooks">
-            <img class="bookCovers" src="{{bookData.url}}" alt="{{bookData.title}}">
-            <div class="homeBookInfo">
-              <h3>{{bookData.title}}</h3>
-              <h5>by {{bookData.authors }}</h5>
-              <h5>{{bookData.genre}}</h5>
-              <p> {{bookData.desc}} </p>
+    <div id="activeBody">
+      <nav>
+        <a style="background: darkred">Authors</a>
+        <a href="/books">Books</a>
+      </nav>
+      <div id="authorArea">
+        {{#if bookData}}
+            <div class="homeAuthor">
+              <img class="authorPic" src="{{bookData.url}}" alt="{{bookData.title}}">
+              <div class="authorInfo">
+                <h3>{{bookData.title}}</h3>
+                <h5>by {{bookData.authors }}</h5>
+                <h5>{{bookData.genre}}</h5>
+                <p> {{bookData.desc}} </p>
+              </div>
             </div>
-          </div>
-      {{/if}}
-
+        {{/if}}
+      </div>
     </div>
   </body>
 </html>

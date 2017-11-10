@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>G64 Reads: Books</title>
     <link rel="stylesheet" href="/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
   </head>
   <body>
     <header>
@@ -12,20 +13,24 @@
         <h1>Galvanize Reads</h1>
       </a>
     </header>
-    <div id="bookArea">
-
-      {{#if bookData}}
-          <div class="homeBooks">
-            <img class="bookCovers" src="{{bookData.url}}" alt="{{bookData.title}}">
-            <div class="homeBookInfo">
-              <h3>{{bookData.title}}</h3>
-              <h5>by {{bookData.authors }}</h5>
-              <h5>{{bookData.genre}}</h5>
-              <p> {{bookData.desc}} </p>
+    <div id="activeBody">
+      <nav>
+        <a style="background: darkred">Authors</a>
+        <a href="/books">Books</a>
+      </nav>
+      <div id="authorArea">
+        {{#if data}}
+            <div class="homeAuthor">
+              <img class="authorPic" src="{{data.portrate_url}}" alt="{{data.firstName}} {{data.lastName}}">
+              <div class="authorInfo">
+                <h3>{{data.name}}</h3>
+                <p> {{data.bio}} </p>
+                <h5>Books</h5>
+                <p>{{data.books}} </p>
+              </div>
             </div>
-          </div>
-      {{/if}}
-
+        {{/if}}
+      </div>
     </div>
   </body>
 </html>

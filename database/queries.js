@@ -125,8 +125,23 @@ function addBookAuth(bookID, authID) {
       book_auth.author_id = authID
 
       return db('books_authors').insert(book_auth)
+  })
+}
 
+function getAuthorById(id){
+  return db('authors').select().where('authors.id', id).join('books_authors', 'authors.id', 'books_authors.author_id').join('books', 'books_authors.book_id', 'books.id').then(data =>{
+    var storyArr = []
+    var authorObj = new Object();
+      authorObj.name = data[0].firstName + " " + data[0].lastName;
+      authorObj.bio = data[0].bio;
+      authorObj.portrate_url = data[0].portrate_url;
+      authorObj.books = [];
 
+    for(var i = 0; i < data.length; i++) {
+      authorObj.books.push(" " + data[i].title)
+    }
+
+    return authorObj
   })
 }
 
@@ -137,5 +152,6 @@ module.exports = {
   getOneBook,
   getAllAuthorData,
   addBookToDB,
-  addBookAuth
+  addBookAuth,
+  getAuthorById
 }
