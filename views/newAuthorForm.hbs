@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>G64 Reads: New Book</title>
+    <link rel="stylesheet" href="/main.css">
+  </head>
+  <body>
+    <header>
+      <a href="/">
+        <img id="logo" width="110px" height="80px" src="/bookLogo.png" alt="an open book">
+        <h1>Galvanize Reads</h1>
+      </a>
+    </header>
+    <div id="activeBody">
+      <nav>
+        <a href="/authors">Authors</a>
+        <a href="/books">Books</a>
+      </nav>
+      <form action="/authors/new/post" method="post">
+        <label>First Name</label>
+        <input type="text" name="firstName" value="">
+        <label>Last Name</label>
+        <input type="text" name="lastName" value="">
+        <label for="">Portrait URL</label>
+        <input type="text" name="portrate_url" value="">
+        <label for="">Biography</label>
+        <textarea class="bookDescInput" name="bio"></textarea>
+        <button type="submit">Add Author</button>
+      </form>
+    </div>
+  </body>
+</html>

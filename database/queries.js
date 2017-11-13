@@ -75,7 +75,6 @@ function getOneBook(id) {
 function getAllAuthorData(){
   return db('authors').select().join('books_authors', 'books_authors.author_id', 'authors.id').join('books', 'books_authors.book_id', 'books.id')
   .then(data => {
-
     var arrAuthors = []
     var authorInfo = new Object()
     for (var i = 0; i < data.length; i++){
@@ -145,6 +144,11 @@ function getAuthorById(id){
   })
 }
 
+function addAuthorToDB(body) {
+  return db('authors').insert(body)
+
+}
+
 module.exports = {
   getBookData,
   getAuthorData,
@@ -153,5 +157,6 @@ module.exports = {
   getAllAuthorData,
   addBookToDB,
   addBookAuth,
-  getAuthorById
+  getAuthorById,
+  addAuthorToDB
 }

@@ -68,6 +68,10 @@ app.get('/authors', (req,res)=>{
   })
 })
 
+app.get('/authors/new', (req,res)=>{
+  res.render('newAuthorForm')
+})
+
 app.get('/authors/:id', (req,res)=>{
   const id = req.params.id;
   queries.getAuthorById(id)
@@ -88,5 +92,14 @@ app.post('/books/new/post', (req,res)=>{
     }
     res.redirect('/')
   })
+})
 
+app.post('/authors/new/post', (req,res)=>{
+  // res.send(req.body)
+  queries.addAuthorToDB(req.body)
+  .then(data => {
+    res.redirect('/')
+  })
+
+  // res.send(req.body)
 })

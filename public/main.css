@@ -138,11 +138,12 @@ nav {
 nav a {
   padding: 2em;
   margin: 1em;
-  margin-top: 2.5em;
+  margin-top: 5.5em;
   width: 4em;
   background-color: red;
   transform: rotate(270deg);
   transition: border-radius 2s, background-color 1s;
+
 }
 
 nav a:hover, #bookNav a:hover, .bookLinks:hover  {
