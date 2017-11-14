@@ -7,7 +7,7 @@ exports.up = function(knex, Promise) {
       table.string('lastName');
       table.text('bio');
       table.string('portrate_url');
-      table.integer('book_id')
+      table.integer('book_id').references('books.id').onDelete('CASCADE')
     })
   ])
 };

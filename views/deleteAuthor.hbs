@@ -23,18 +23,15 @@
             <div class="homeAuthor">
               <img class="authorPic" src="{{data.portrate_url}}" alt="{{data.firstName}} {{data.lastName}}">
               <div class="authorInfo">
-                <span style="display: flex; flex-direction: row">
-                  <h3>{{data.name}}</h3>
-                  <a href="/authors/{{authorId}}/edit"><img alt="edit" src="/edit.png" style="width: 50px; height: 50px;    position: absolute;
-                  right: 30%; background-color: tomato"></a>
-                  <a href="/authors/{{authorId}}/delete"><img src="http://www.pvhc.net/img5/nnzeoijzleeiilchqmlc.png" style="width: 50px; height: 50px;    position: absolute;
-                  right: 20%; background-color: tomato" alt="delete"></a>
-                </span>
+                <h3>{{data.name}}</h3>
                 <p> {{data.bio}} </p>
                 <h5>Books</h5>
                 <p>{{data.books}} </p>
               </div>
             </div>
+            <form method="POST" action="/authors/{{authorId}}/delete?_method=DELETE">
+              <button type="submit" style="background-color: tomato"><h2>Delete {{data.name}}</h2></button>
+            </form>
         {{/if}}
 
       </div>

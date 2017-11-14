@@ -2,12 +2,14 @@ const express = require('express');
 const queries = require('./database/queries')
 const port = process.env.PORT || 3000
 const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 
 const app = express();
 
 app.set('view engine', 'hbs')
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(methodOverride('_method'))
 
 app.listen(port, ()=>{
   console.log("KEYBLADE!")
@@ -78,8 +80,30 @@ app.get('/authors/:id', (req,res)=>{
   .then(data=>{
     // res.send(data)
     res.render('oneAuthorPage', {
-      data:data
+      data:data,
+      authorId: id
     })
+  })
+})
+
+app.get('/authors/:id/delete', (req,res)=>{
+  const id = req.params.id;
+  queries.getAuthorById(id)
+  .then(data=>{
+    // res.send(data)
+    res.render('deleteAuthor', {
+      data:data,
+      authorId: id
+    })
+  })
+})
+
+app.delete('/authors/:id/delete', (req,res)=>{
+  const id = req.params.id;
+  // res.send('I want to delete ' + id)
+  queries.deleteAuthor(id)
+  .then(data=>{
+    res.redirect('/')
   })
 })
 

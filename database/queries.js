@@ -9,7 +9,7 @@ function getAuthorData() {
 }
 
 function getAllBookData() {
-  return db('authors').select('*').join('books_authors', 'authors.id', 'author_id').fullOuterJoin('books', 'books_authors.book_id', 'books.id' )
+  return db('authors').select('*').join('books_authors', 'authors.id', 'books_authors.author_id').join('books', 'books_authors.book_id', 'books.id' )
   .then(data=>{
     // return data
     let arrBooks = []
@@ -66,6 +66,7 @@ function getOneBook(id) {
 
     for (var i = 0; i < data.length; i++){
       arrBooks[0][id].authors.push(" " + data[i].firstName + " " + data[i].lastName)
+      // arrBooks[0][id].authors.push(authors.id)
     }
     // return data
     return arrBooks[0][id]
@@ -75,6 +76,7 @@ function getOneBook(id) {
 function getAllAuthorData(){
   return db('authors').select().join('books_authors', 'books_authors.author_id', 'authors.id').join('books', 'books_authors.book_id', 'books.id')
   .then(data => {
+    // return data
     var arrAuthors = []
     var authorInfo = new Object()
     for (var i = 0; i < data.length; i++){
@@ -92,9 +94,18 @@ function getAllAuthorData(){
     }
 
     for (var i = 0; i < data.length; i++) {
-      for (var j = 1; j < Object.keys(arrAuthors[0]).length + 1; j++) {
-        if (data[i].author_id == arrAuthors[0][j].author_id) {
-          arrAuthors[0][j]["books"].push(" " + data[i].title)
+      // console.log(data[i])
+      for (var j = 1; j <= 100; j++) {
+        // console.log(j)
+        if (arrAuthors[0][j] !== undefined) {
+          // console.log('---------------------------------------')
+          console.log(arrAuthors[0][j])
+          if (data[i].author_id == arrAuthors[0][j].author_id) {
+            // console.log(data[i])
+            // console.log('----------------------------------')
+            // console.log(arrAuthors[0][j])
+            arrAuthors[0][j]["books"].push(" " + data[i].title)
+          }
         }
       }
     }
@@ -149,6 +160,10 @@ function addAuthorToDB(body) {
 
 }
 
+function deleteAuthor(id) {
+  return db('authors').select('*').where('id', id).del()
+}
+
 module.exports = {
   getBookData,
   getAuthorData,
@@ -158,5 +173,6 @@ module.exports = {
   addBookToDB,
   addBookAuth,
   getAuthorById,
-  addAuthorToDB
+  addAuthorToDB,
+  deleteAuthor
 }

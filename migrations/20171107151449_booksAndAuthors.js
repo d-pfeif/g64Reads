@@ -3,8 +3,8 @@ exports.up = function(knex, Promise) {
   return Promise.all([
     knex.schema.createTable('books_authors', (table)=>{
       table.increments();
-      table.integer('book_id');
-      table.integer('author_id');
+      table.integer('book_id').references('books.id').onDelete('CASCADE');
+      table.integer('author_id').references('authors.id').onDelete('CASCADE');
     })
   ])
 };
