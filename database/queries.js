@@ -99,7 +99,7 @@ function getAllAuthorData(){
         // console.log(j)
         if (arrAuthors[0][j] !== undefined) {
           // console.log('---------------------------------------')
-          console.log(arrAuthors[0][j])
+          // console.log(arrAuthors[0][j])
           if (data[i].author_id == arrAuthors[0][j].author_id) {
             // console.log(data[i])
             // console.log('----------------------------------')
