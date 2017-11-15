@@ -1,6 +1,5 @@
 const express = require('express');
 const queries = require('../database/queries');
-const bodyParser = require('body-parser');
 
 const router = express.Router();
 

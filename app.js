@@ -1,8 +1,9 @@
 const express = require('express');
-const queries = require('./database/queries')
 const port = process.env.PORT || 3000
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
+
+//routes
 const indexRoute = require('./routes/index')
 const booksRoute = require('./routes/books')
 const authorsRoute = require('./routes/authors')

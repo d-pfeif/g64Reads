@@ -1,7 +1,5 @@
 const express = require('express');
 const queries = require('../database/queries');
-const methodOverride = require('method-override');
-const bodyParser = require('body-parser');
 
 const router = express.Router();
 
@@ -41,6 +39,11 @@ router.get('/:id/delete', (req,res)=>{
       authorId: id
     })
   })
+})
+
+router.get('/:id/edit', (req,res)=>{
+  const id = req.params.id;
+
 })
 
 router.delete('/:id/delete', (req,res)=>{
